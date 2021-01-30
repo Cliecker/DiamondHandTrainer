@@ -13,7 +13,7 @@ public class WMG_Events : WMG_GUI_Functions {
 		EventTrigger eventTrigger = go.GetComponent<EventTrigger>();
 		if (eventTrigger == null) {
 			eventTrigger = go.AddComponent<EventTrigger>();
-			eventTrigger.delegates = new System.Collections.Generic.List<EventTrigger.Entry>();
+			eventTrigger.triggers = new System.Collections.Generic.List<EventTrigger.Entry>();
 		}
 		// Create a nee TriggerEvent and add a listener
 		EventTrigger.TriggerEvent trigger = new EventTrigger.TriggerEvent();
@@ -21,7 +21,7 @@ public class WMG_Events : WMG_GUI_Functions {
 		// Create and initialise EventTrigger.Entry using the created TriggerEvent
 		EventTrigger.Entry entry = new EventTrigger.Entry() { callback = trigger, eventID = triggerType };
 		// Add the EventTrigger.Entry to delegates list on the EventTrigger
-		eventTrigger.delegates.Add(entry);
+		eventTrigger.triggers.Add(entry);
 	}
 
 	private void AddEventTrigger(UnityAction<GameObject, bool> action, EventTriggerType triggerType, GameObject go, bool state)
@@ -29,7 +29,7 @@ public class WMG_Events : WMG_GUI_Functions {
 		EventTrigger eventTrigger = go.GetComponent<EventTrigger>();
 		if (eventTrigger == null) {
 			eventTrigger = go.AddComponent<EventTrigger>();
-			eventTrigger.delegates = new System.Collections.Generic.List<EventTrigger.Entry>();
+			eventTrigger.triggers = new System.Collections.Generic.List<EventTrigger.Entry>();
 		}
 		// Create a nee TriggerEvent and add a listener
 		EventTrigger.TriggerEvent trigger = new EventTrigger.TriggerEvent();
@@ -37,7 +37,7 @@ public class WMG_Events : WMG_GUI_Functions {
 		// Create and initialise EventTrigger.Entry using the created TriggerEvent
 		EventTrigger.Entry entry = new EventTrigger.Entry() { callback = trigger, eventID = triggerType };
 		// Add the EventTrigger.Entry to delegates list on the EventTrigger
-		eventTrigger.delegates.Add(entry);
+		eventTrigger.triggers.Add(entry);
 	}
 
 	private void AddEventTrigger(UnityAction<GameObject, bool, PointerEventData> action, EventTriggerType triggerType, GameObject go, bool state)
@@ -45,7 +45,7 @@ public class WMG_Events : WMG_GUI_Functions {
 		EventTrigger eventTrigger = go.GetComponent<EventTrigger>();
 		if (eventTrigger == null) {
 			eventTrigger = go.AddComponent<EventTrigger>();
-			eventTrigger.delegates = new System.Collections.Generic.List<EventTrigger.Entry>();
+			eventTrigger.triggers = new System.Collections.Generic.List<EventTrigger.Entry>();
 		}
 		// Create a nee TriggerEvent and add a listener
 		EventTrigger.TriggerEvent trigger = new EventTrigger.TriggerEvent();
@@ -53,7 +53,7 @@ public class WMG_Events : WMG_GUI_Functions {
 		// Create and initialise EventTrigger.Entry using the created TriggerEvent
 		EventTrigger.Entry entry = new EventTrigger.Entry() { callback = trigger, eventID = triggerType };
 		// Add the EventTrigger.Entry to delegates list on the EventTrigger
-		eventTrigger.delegates.Add(entry);
+		eventTrigger.triggers.Add(entry);
 	}
 
 	#region GraphClickEvents

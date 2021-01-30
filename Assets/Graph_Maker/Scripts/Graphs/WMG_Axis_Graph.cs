@@ -801,10 +801,10 @@ public class WMG_Axis_Graph : WMG_Graph_Manager {
 	/// only the parts of the graph affected by properties that have changed since a last refresh.
 	/// </summary>
 	public virtual void Refresh() {
-		Profiler.BeginSample ("WMG_Axis_Graph Refresh");
+		UnityEngine.Profiling.Profiler.BeginSample ("WMG_Axis_Graph Refresh");
 		ResumeCallbacks();
 		PauseCallbacks();
-		Profiler.EndSample ();
+		UnityEngine.Profiling.Profiler.EndSample ();
 	}
 
 	void OnRectTransformDimensionsChange () {
@@ -860,38 +860,38 @@ public class WMG_Axis_Graph : WMG_Graph_Manager {
 	}
 	
 	void ResumeCallbacks() {
-		Profiler.BeginSample ("Y-Axis Updates");
+		UnityEngine.Profiling.Profiler.BeginSample ("Y-Axis Updates");
 		yAxis.ResumeCallbacks();
 		if (IsDualY) {
 			yAxis2.ResumeCallbacks();
 		}
-		Profiler.EndSample ();
-		Profiler.BeginSample ("X-Axis Updates");
+		UnityEngine.Profiling.Profiler.EndSample ();
+		UnityEngine.Profiling.Profiler.BeginSample ("X-Axis Updates");
 		xAxis.ResumeCallbacks();
-		Profiler.EndSample ();
-		Profiler.BeginSample ("Graph Updates");
+		UnityEngine.Profiling.Profiler.EndSample ();
+		UnityEngine.Profiling.Profiler.BeginSample ("Graph Updates");
 		for (int i = 0; i < changeObjs.Count; i++) {
 			changeObjs[i].changesPaused = false;
 			if (changeObjs[i].changePaused) changeObjs[i].Changed();
 		}
-		Profiler.EndSample ();
-		Profiler.BeginSample ("Series Updates");
+		UnityEngine.Profiling.Profiler.EndSample ();
+		UnityEngine.Profiling.Profiler.BeginSample ("Series Updates");
 		int lineSeriesCount = lineSeries.Count;
 		for (int j = 0; j < lineSeriesCount; j++) {
 			if (!activeInHierarchy(lineSeries[j])) continue;
 			WMG_Series theSeries = lineSeries[j].GetComponent<WMG_Series>();
 			theSeries.ResumeCallbacks();
 		}
-		Profiler.EndSample ();
-		Profiler.BeginSample ("Legend Updates");
+		UnityEngine.Profiling.Profiler.EndSample ();
+		UnityEngine.Profiling.Profiler.BeginSample ("Legend Updates");
 		if (legend != null) {
 			legend.ResumeCallbacks ();
 		}
-		Profiler.EndSample ();
-		Profiler.BeginSample ("AutoPadding");
+		UnityEngine.Profiling.Profiler.EndSample ();
+		UnityEngine.Profiling.Profiler.BeginSample ("AutoPadding");
 		autoPaddingC.changesPaused = false;
 		if (autoPaddingC.changePaused) autoPaddingC.Changed();
-		Profiler.EndSample ();
+		UnityEngine.Profiling.Profiler.EndSample ();
 	}
 
 	void updateFromDataSource() {
@@ -2006,7 +2006,7 @@ public class WMG_Axis_Graph : WMG_Graph_Manager {
 	/// <param name="index">Index.</param>
 	/// <param name="comboType">Combo type.</param>
 	public WMG_Series addSeriesAt(int index, WMG_Series.comboTypes comboType = WMG_Series.comboTypes.line) {
-		Profiler.BeginSample ("Add Series");
+		UnityEngine.Profiling.Profiler.BeginSample ("Add Series");
 		if (Application.isPlaying) {
 			Init ();
 		}
@@ -2032,7 +2032,7 @@ public class WMG_Axis_Graph : WMG_Graph_Manager {
 				autoPaddingC.Changed (); // legend swatch created and positioned in series init, so also need to run auto fit this frame
 			}
 		}
-		Profiler.EndSample ();
+		UnityEngine.Profiling.Profiler.EndSample ();
 		return curObj.GetComponent<WMG_Series>();
 	}
 
